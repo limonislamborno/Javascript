@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="">Unit Price</label>
+    <input type="text" id="uprice">
+    <label for="">Quantity</label>
+    <input type="text" id="quantity" oninput="calculated()">
+    <label for="">Price</label>
+    <input type="text" id="price">
+    <label for="">Discount</label>
+    <input type="text" id="dis">
+    <label for="">Payment</label>
+    <input type="text" id="pay">
+    
+
+
+    <script>
+        function calculated(){
+            let uprice=document.getElementById("uprice").value;
+            let quantity=document.getElementById("uprice").value;
+            price=uprice*quantity;
+            discount=0;
+            payment=0;
+
+            if(price<=500){
+                discount=price*(5/100);
+                payment=price-discount;
+
+            }
+            else if(price<=500){
+                discount=price*(7/100);
+                payment=price-discount;
+
+            }
+            else{
+                discount=price*(7/100);
+                payment=price-discount;
+
+            }
+            document.getElementById("dis").value=discount;
+            document.getElementById("pay").value=payment;
+            document.getElementById("price").value=price;
+
+
+
+        }
+
+    </script>
+</body>
+</html>

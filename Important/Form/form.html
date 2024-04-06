@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span{
+            color: red;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <pre>
+        <form action="result.html" onsubmit="return dataTransfer()">
+            <label for="">Name</label>
+            <input type="text" id="name">
+            <span id="sName"></span>
+            <label for="">Eamil</label>
+            <input type="text" id="email">
+            <span id="sEmail"></span>
+            <label for="">Password</label>
+            <input type="password" id="password">
+            <span id="sPassword"></span>
+            <label for="">Gender</label>
+        <input type="radio" name="gender" id="male" > Male
+        <input type="radio" name="gender" id="female"> Female
+        <input type="radio" name="gender" id="other"> other
+        <span id="sGender"></span>
+            <label for="">Subject</label>
+            <select name="" id="subject">
+                <option value="">--select your subject--</option>
+                <option value="">JEE</option>
+                <option value="">WEB</option>
+                <option value="">NT</option>
+            </select>
+            <label for="">Hobby</label>
+            <input type="checkbox" value="Gardening"> Gardening
+            <input type="checkbox" value="Playing"> Palying
+            <input type="checkbox" value="Shoping"> Shoping
+            <input type="checkbox" value="Smoking"> Smoking
+
+            <label for="">About</label>
+            <textarea name="" id="about" cols="30" rows="10"></textarea>
+
+            <input type="submit" value="Submit">
+        
+        
+        
+        
+        </form>
+    </pre>
+    
+
+
+
+    <script>
+        function dataTransfer(){
+            const name=document.getElementById("name").value;
+            const email=document.getElementById("email").value;
+            const password=document.getElementById("password").value;
+            const about=document.getElementById("about").value;
+            const regEx=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            const passRegEx=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/;
+
+            let gender;
+            if(document.getElementById("male").checked==true){
+                gender="Male"
+            }
+            
+            else if(document.getElementById("female").checked==true){
+                gender="Female"
+            }
+            
+            
+            else if(document.getElementById("other").checked==true){
+                gender="Other"
+            }
+
+            let sub=document.getElementById("subject");
+            let subject=sub.options[sub.selectedIndex].text;
+
+            let hobby=[];
+            let ho=document.querySelectorAll('input[type=checkbox]:checked');
+            for(let i=0; i<ho.length; i++){
+                hobby.push(ho[i].value);
+            }
+            let s_hobby=hobby.toString();
+
+
+            // validation start
+            if(name.length<5 || name.length>20){
+                document.getElementById("sName").innerHTML="Name must be 5 to 20 charecter";
+                return false;
+            }
+            if(!(regEx.test(email))){
+                document.getElementById("sEmail").innerHTML="Invalid Eamil";
+                return false;
+            }
+            if(!(passRegEx.test(email))){
+                document.getElementById("sPassword").innerHTML="Password must be one (capital+small) letter & symbol";
+                return false;
+            }
+            if(!(document.getElementById("male").checked || document.getElementById("female").checked || document.getElementById("other").checked ) ){
+                document.getElementById("sGender").innerHTML="Gender must be selected!";
+            }
+
+            
+
+
+
+
+
+
+
+
+
+            sessionStorage.setItem("s_name",name);
+            sessionStorage.setItem("s_email",email);
+            sessionStorage.setItem("s_password",password);
+            sessionStorage.setItem("s_about",about);
+            sessionStorage.setItem("s_gender",gender);
+            sessionStorage.setItem("s_subject",subject);
+            sessionStorage.setItem("s_hobby",s_hobby);
+        }
+
+
+
+       
+    </script>
+</body>
+</html>

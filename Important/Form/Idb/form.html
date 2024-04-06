@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form{
+            background-color: beige;
+            font-size: 15px;
+            margin: 5px auto;
+        }
+        span{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <pre>
+        <form action="rsult.html" onsubmit="return dataTransfer()">
+            <label for="">Name</label>
+            <input type="text" id="name">
+            <span id="sName"></span>
+
+            <label for="">Contact</label>
+            <input type="text" id="contact">
+            <label for="">Email</label>
+            <input type="text" id="email">
+            <span id="sEmail"></span>
+
+            <label for="">Remarks</label>
+            <textarea name="" id="remarks" cols="30" rows="10"></textarea>
+
+            <label for="">Gender</label>
+            <input type="radio" id="male" name="gender"> Male
+            <input type="radio" id="female" name="gender"> Female
+            <span id="sGender"></span>
+
+            <label for="">Course</label>
+            <input type="checkbox" value="JEE"> JEE
+            <input type="checkbox" value="WEB"> WEB
+            <input type="checkbox" value="DDD"> DDD
+            <input type="checkbox" value="NT"> NT
+
+            <label for="">Location</label>
+            <select name="" id="location">
+                <option value="--Select One--">--Select One--</option>
+                <option value="Banani">Banani</option>
+                <option value="Dhanmondi">Dhanmondi</option>
+                <option value="Mirpur">Mirpur</option>
+            </select>
+
+            <input type="submit" value="Submit">
+        
+        
+        
+        
+        </form>
+    </pre>
+
+
+    <script>
+        function dataTransfer(){
+            const name= document.getElementById("name").value;
+            const contact= document.getElementById("contact").value;
+            const remarks= document.getElementById("remarks").value;
+            const email= document.getElementById("email").value;
+            const regEx=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            let gender;
+            if(document.getElementById("male").checked==true){
+                gender="Male"
+            }
+            else if(document.getElementById("female").checked==true){
+                gender="Female"
+            }
+            let course=[];
+            let core=document.querySelectorAll('input[type=checkbox]:checked');
+            for(let i=0; i<core.length; i++){
+                course.push(core[i].value);
+                
+            }
+            let s_course=course.toString();
+
+            let lock=document.getElementById("location");
+            let location=lock.options[lock.selectedIndex].text;
+
+
+
+            // validation start
+
+            if(name.length<5 || name.length>30){
+                document.getElementById("sName").innerHTML="Name must be 5 to 30 charecter"
+                return false;
+            }
+
+            if(!(regEx.test(email))){
+                document.getElementById("sEmail").innerHTML="Email must be accurate"
+                return false;
+            }
+            if(!(document.getElementById("male").checked || document.getElementById("female").checked)){
+                document.getElementById("sGender").innerHTML="Gender must be selected"
+                return false;
+            }
+
+
+
+
+            sessionStorage.setItem("s_name",name);
+            sessionStorage.setItem("s_contact",contact);
+            sessionStorage.setItem("s_email",email);
+            sessionStorage.setItem("s_remarks",remarks);
+            sessionStorage.setItem("s_gender",gender);
+            sessionStorage.setItem("s_course",s_course);
+            sessionStorage.setItem("s_location",location);
+        }
+    </script>
+</body>
+</html>

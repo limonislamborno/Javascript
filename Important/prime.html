@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        let start=parseInt(prompt("Enter your start point"));
+        let end=parseInt(prompt("Enter your end point"));
+
+        for(let p=start; p<=end; p++){
+            let count=0;
+            for(let i=0; i<=p; i++){
+                if(p%i==0){
+                    count=count+1;
+                }
+            }
+            if(count==2){
+                document.write("<br>"+p);
+                
+            }
+            
+        }
+
+
+    </script>
+    
+</body>
+</html>

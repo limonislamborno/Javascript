@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            width: 45%;
+            border: 1px solid black;
+            margin: 10px auto;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0px 10px 60px 0px black;
+        }
+        h3{
+            color: blueviolet;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>Discount Price</h3>
+    <label for="">Price</label><br>
+    <input type="text" id="price"><br><br>
+    <label for="">Discount in percentage</label><br>
+    <input type="text" id="dprice" oninput="calculatedCprice()"><br><br>
+    <label for="">Current Price</label><br>
+    <input type="text" id="cprice"><br><br>
+
+
+
+    <script>
+        function calculatedCprice() {
+            let price = document.getElementById("price").value;
+            dprice = document.getElementById("dprice").value;
+
+            let ccprice = 0;
+            ccprice = price - (price * dprice / 100);
+            document.getElementById("cprice").value = ccprice;
+
+        }
+    </script>
+</body>
+
+</html>

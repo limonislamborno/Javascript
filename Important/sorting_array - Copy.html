@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let myArray=[];
+        let n=parseInt(prompt("Enter your item number"))
+        for(let i=1; i<=n; i++){
+            let input=parseInt(prompt("Enter "+ i+" number"));
+            myArray.push(input);
+        }
+        document.write("<br>"+"Input Array "+myArray);
+
+        for(let i=0; i<myArray.length-1; i++){
+            for(let j=0; j<myArray.length-i-1; j++){
+                if(myArray[j]>myArray[j+1]){
+                    let temp=myArray[j];
+                    myArray[j]=myArray[j+1];
+                    myArray[j+1]=temp;
+
+                }
+            }
+        }
+        document.write("<br>"+"Sorting Array "+myArray);
+    </script>
+</body>
+</html>

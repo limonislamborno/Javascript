@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+        <form action="result.html" onsubmit="return dataTransfer()">
+            <legend>Idb Student Form</legend><br>
+            <label for="">Name</label><br>
+            <input type="text" id="name" class="common"><br>
+            <label for="">Contact</label><br>
+            <input type="text" id="contact" class="common"><br>
+            <label for="">Remarks</label><br>
+            <textarea name="" class="common" id="remarks" cols="30" rows="5"></textarea><br>
+            <label for="">Gender:</label><br>
+            <input type="radio" name="gender" id="male"> Male
+            <input type="radio" name="gender" id="female"> Female<br>
+            <label for="">Course</label><br>
+            
+            <input type="checkbox" value="NT"> NT<br>
+            <input type="checkbox" value="IAD"> IAD<br>
+            <input type="checkbox" value="DD"> DD<br>
+            <input type="checkbox" value="ESAD "> ESAD<br>
+
+            <label for="">Location</label><br>
+            <select name="location" id="location" class="common">
+                <option value="Banani">Banani</option>
+                <option value="Dhanmondi">Dhanmondi</option>
+                <option value="Mirpur ">Mirpur </option>
+            </select><br>
+            <input type="reset" value="Reset" class="btn r">
+            <input type="submit" value="Submit" class="btn s">
+        </form>
+
+    
+
+
+    <script>
+
+        function dataTransfer(){
+            const name=document.getElementById("name").value;
+            const contact=document.getElementById("contact").value;
+            const remarks=document.getElementById("remarks").value;
+            let gender;
+            if(document.getElementById("male").checked==true){
+                gender="Male"
+            }
+            else if(document.getElementById("female").checked==true){
+                gender="Female"
+            }
+
+            let course=[];
+            let core=document.querySelectorAll('input[type=checkbox]:checked');
+            for(let i=0; i<core.length; i++){
+                course.push(core[i].value);
+            }
+            let s_course=course.toString();
+
+          let lock=document.getElementById("location");
+          let location=lock.options[lock.selectedIndex].text;
+            
+
+
+
+
+
+            sessionStorage.setItem("name",name);
+            sessionStorage.setItem("contact",contact);
+            sessionStorage.setItem("remarks",remarks);
+            sessionStorage.setItem("gender",gender);
+            sessionStorage.setItem("s_course",s_course);
+            sessionStorage.setItem("location",location);
+        }
+    </script>
+</body>
+</html>

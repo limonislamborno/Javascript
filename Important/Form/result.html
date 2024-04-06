@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <pre>
+        <form action="">
+            Name
+            <span id="name"></span>
+            Eamil
+            <span id="email"></span>
+            Password
+            <span id="password"></span>
+            Gender
+            <span id="gender"></span>
+           Subject
+            <span id="subject"></span>
+            Hobby
+            <span id="hobby"></span>
+            About
+            <span id="about"></span>
+
+        </form>
+    </pre>
+    
+
+
+    <script>
+
+        document.getElementById("name").innerHTML=sessionStorage.getItem("s_name");
+        document.getElementById("email").innerHTML=sessionStorage.getItem("s_email");
+        document.getElementById("password").innerHTML=sessionStorage.getItem("s_password");
+        document.getElementById("about").innerHTML=sessionStorage.getItem("s_about");
+        document.getElementById("gender").innerHTML=sessionStorage.getItem("s_gender");
+        document.getElementById("subject").innerHTML=sessionStorage.getItem("s_subject");
+        document.getElementById("hobby").innerHTML=sessionStorage.getItem("s_hobby");
+
+
+
+    </script>
+</body>
+</html>
